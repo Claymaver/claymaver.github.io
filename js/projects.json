@@ -1,0 +1,94 @@
+{
+    "projects": [
+        {
+            "id": "1",
+            "title": "Project Title 1",
+            "category": "3D Models",
+            "image": "https://placehold.co/800x800/2A2D3A/00fbff?text=Project+1",
+            "description": "Brief project description that gives an overview of the work.",
+            "tags": ["Character", "Blender", "Rigging"],
+            "details": [
+                {
+                    "title": "The Challenge",
+                    "content": "Detailed description of the project challenges and requirements."
+                },
+                {
+                    "title": "The Process",
+                    "content": "Explanation of the creative and technical process used."
+                },
+                {
+                    "title": "Technical Details",
+                    "content": "Software used: Blender, Substance Painter, etc."
+                }
+            ],
+            "gallery": [
+                {
+                    "url": "https://placehold.co/800x600/2A2D3A/00fbff?text=Detail+1",
+                    "caption": "Early concept development"
+                },
+                {
+                    "url": "https://placehold.co/800x600/2A2D3A/00fbff?text=Detail+2",
+                    "caption": "Wireframe view"
+                },
+                {
+                    "url": "https://placehold.co/800x600/2A2D3A/00fbff?text=Detail+3",
+                    "caption": "Final render"
+                }
+            ]
+        },
+        {
+            "id": "2",
+            "title": "Project Title 2",
+            "category": "Animations",
+            "image": "https://placehold.co/800x800/2A2D3A/00fbff?text=Project+2",
+            "description": "Brief project description that gives an overview of the work.",
+            "tags": ["Animation", "Motion", "Character"],
+            "details": [
+                {
+                    "title": "The Challenge",
+                    "content": "Detailed description of the project challenges and requirements."
+                },
+                {
+                    "title": "The Process",
+                    "content": "Explanation of the creative and technical process used."
+                }
+            ],
+            "gallery": [
+                {
+                    "url": "https://placehold.co/800x600/2A2D3A/00fbff?text=Detail+1",
+                    "caption": "Animation keyframes"
+                },
+                {
+                    "url": "https://placehold.co/800x600/2A2D3A/00fbff?text=Detail+2",
+                    "caption": "Final scene"
+                }
+            ]
+        },
+        {
+            "id": "3",
+            "title": "Project Title 3",
+            "category": "Environments",
+            "image": "https://placehold.co/800x800/2A2D3A/00fbff?text=Project+3",
+            "description": "Brief project description",
+            "tags": ["Environment", "Lighting", "Texturing"]
+        }
+    ],
+    "categories": [
+        {
+            "id": "all",
+            "name": "All Work"
+        },
+        {
+            "id": "3D Models",
+            "name": "3D Models"
+        },
+        {
+            "id": "Animations",
+            "name": "Animations"
+        },
+        {
+            "id": "Environments",
+            "name": "Environments"
+        }
+    ]
+} 

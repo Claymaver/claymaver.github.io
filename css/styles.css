@@ -1,0 +1,189 @@
+/* Add to styles.css */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --neo-primary: #00fbff;
+  --neo-secondary: #005c5e;
+  --neo-accent: #ff00e5;
+  --neo-dark: #001618;
+  --neo-light: #e6ffff;
+  --theme-primary: #00fbff;
+  --theme-secondary: #2A2D3A;
+  --theme-accent: #FF3366;
+  --theme-dark: #1A1C24;
+  --theme-light: #F0F7F7;
+}
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background-color: var(--neo-dark);
+  color: var(--neo-light);
+}
+
+.neo-glow {
+  text-shadow: 0 0 10px var(--neo-primary),
+               0 0 20px var(--neo-primary),
+               0 0 30px var(--neo-primary);
+}
+
+.neo-border {
+  border: 1px solid var(--neo-primary);
+  box-shadow: 0 0 10px var(--neo-primary),
+              inset 0 0 5px var(--neo-primary);
+}
+
+.neo-card {
+  background: rgba(0, 22, 24, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 251, 255, 0.2);
+  box-shadow: 0 0 20px rgba(0, 251, 255, 0.1);
+}
+
+.neo-button {
+  background: transparent;
+  border: 1px solid var(--neo-primary);
+  color: var(--neo-primary);
+  padding: 0.75rem 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.neo-button:hover {
+  background: var(--neo-primary);
+  color: var(--neo-dark);
+  box-shadow: 0 0 20px var(--neo-primary);
+}
+
+/* Grid pattern background */
+.neo-grid {
+  background-image: linear-gradient(rgba(0, 251, 255, 0.1) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0, 251, 255, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-position: center center;
+}
+
+/* 3D element styling */
+.neo-3d {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.neo-gradient {
+  background: linear-gradient(45deg, 
+    var(--neo-primary), 
+    var(--neo-secondary)
+  );
+}
+/* Form styling */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    background: rgba(26, 28, 36, 0.5);
+    border: 1px solid rgba(0, 251, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--neo-primary);
+    box-shadow: 0 0 10px rgba(0, 251, 255, 0.2);
+}
+
+/* Button styling */
+button[type="submit"] {
+    position: relative;
+    overflow: hidden;
+}
+
+button[type="submit"]:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(0, 251, 255, 0.1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+button[type="submit"]:hover:before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Status messages */
+#formStatus p {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+#successMessage {
+    background: rgba(0, 255, 0, 0.1);
+    border: 1px solid rgba(0, 255, 0, 0.2);
+}
+
+#errorMessage {
+    background: rgba(255, 0, 0, 0.1);
+    border: 1px solid rgba(255, 0, 0, 0.2);
+}
+
+/* Loading spinner */
+#loadingSpinner {
+    display: inline-block;
+    margin-left: 0.5rem;
+}
+
+/* Page Transitions */
+html, body {
+    background-color: var(--theme-dark);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+#page-transition {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    display: flex;
+}
+
+.transition-slide {
+    width: 20%;
+    height: 100%;
+    background-color: var(--theme-dark);
+    transform: scaleY(0);
+    will-change: transform;
+}
+
+.transition-slide:nth-child(1) { background-color: var(--theme-secondary); }
+.transition-slide:nth-child(2) { background-color: var(--theme-dark); }
+.transition-slide:nth-child(3) { background-color: var(--theme-secondary); }
+.transition-slide:nth-child(4) { background-color: var(--theme-dark); }
+.transition-slide:nth-child(5) { background-color: var(--theme-secondary); }
+
+/* Prevent FOUC (Flash of Unstyled Content) */
+.no-fouc {
+    visibility: hidden;
+}
+
+.fouc-ready {
+    visibility: visible;
+}

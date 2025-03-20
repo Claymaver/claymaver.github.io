@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="3D Artist Portfolio - Project Details">
+    <title>Project Details - Clay MacDonald</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/main.js" defer></script>
+    <script src="js/project-details.js" defer></script>
+    <script src="js/transitions.js" defer></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'theme': {
+                            primary: '#00fbff',    // Cyan
+                            secondary: '#2A2D3A',  // Dark slate
+                            accent: '#FF3366',     // Coral red
+                            dark: '#1A1C24',       // Nearly black
+                            light: '#F0F7F7'       // Off-white
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-theme-dark text-theme-light">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-theme-secondary/95 backdrop-blur-sm z-50">
+        <div class="container mx-auto flex justify-between items-center p-4">
+            <a href="index.html" class="text-2xl font-bold">
+                <span class="text-theme-primary">Clay MacDonald</span>
+            </a>
+            
+            <ul class="hidden lg:flex space-x-8">
+                <li><a href="index.html" class="hover:text-theme-primary transition-colors">Home</a></li>
+                <li><a href="portfolio.html" class="hover:text-theme-primary transition-colors">Portfolio</a></li>
+                <li><a href="commissions.html" class="hover:text-theme-primary transition-colors">Commissions</a></li>
+                <li><a href="about.html" class="hover:text-theme-primary transition-colors">About</a></li>
+                <li><a href="contact.html" class="hover:text-theme-primary transition-colors">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Project Content -->
+    <main class="pt-32 pb-20 px-4">
+        <div class="container mx-auto max-w-6xl">
+            <!-- Back Button -->
+            <a href="portfolio.html" class="inline-flex items-center text-theme-primary mb-8 hover:text-theme-primary/80 transition-colors">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Back to Portfolio
+            </a>
+
+            <!-- Project Details -->
+            <div id="projectContent">
+                <!-- Content will be dynamically inserted here -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="fixed bottom-0 left-0 right-0 bg-theme-secondary/95 backdrop-blur-sm py-6">
+        <div class="container mx-auto max-w-6xl px-4 text-center opacity-60">
+            <p>&copy; 2025 Clay MacDonald | 3D Artist</p>
+        </div>
+    </footer>
+</body>
+</html> 
