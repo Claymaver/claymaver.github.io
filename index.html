@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/main.js" defer></script>
     <script src="js/transitions.js" defer></script>
+    <script src="js/featured-projects.js" defer></script>
     <script>
         tailwind.config = {
             theme: {
@@ -49,7 +50,9 @@
     <section class="min-h-screen flex items-center justify-center relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-b from-theme-dark/80 to-theme-dark"></div>
         <video class="absolute inset-0 w-full h-full object-cover -z-10" autoplay loop muted playsinline>
+            <source src="Assets/Work/Videos/movie480_vp9.mp4" type="video/webm">
             <source src="Assets/Work/Videos/movie480_vp9.mp4" type="video/mp4">
+            Your browser does not support the video tag.
         </video>
         <div class="container mx-auto px-4 relative z-10 text-center">
             <h1 class="text-6xl md:text-7xl font-bold mb-6 animate-fade-in">
@@ -75,16 +78,8 @@
             <h2 class="text-4xl font-bold mb-12 text-center">
                 Featured <span class="text-theme-primary">Work</span>
             </h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Featured items will be added here -->
-                <div class="group cursor-pointer">
-                    <div class="aspect-video rounded-lg overflow-hidden">
-                        <img src="Assets/Work/Images/Hampter/Hampter Cover.png" alt="Project 1" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300">
-                    </div>
-                    <h3 class="text-xl font-bold mt-4">H.A.M.P.T.E.R.</h3>
-                    <p class="text-theme-light/60">characters</p>
-                </div>
-                <!-- Repeat for more items -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 featured-projects-grid">
+                <!-- Featured projects will be loaded dynamically -->
             </div>
         </div>
     </section>
