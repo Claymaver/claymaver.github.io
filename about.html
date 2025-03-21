@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/main.js" defer></script>
     <script src="js/transitions.js" defer></script>
+    <script src="js/mobile-menu.js" defer></script>
     
     
     <script>
@@ -39,7 +40,11 @@
             <a href="index.html" class="text-2xl font-bold">
                 <span class="text-theme-primary">Clay MacDonald</span>
             </a>
-            
+            <!-- Mobile menu button -->
+            <button class="lg:hidden text-theme-light hover:text-theme-primary transition-colors" id="mobile-menu-button">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+            <!-- Desktop navigation -->
             <ul class="hidden lg:flex space-x-8">
                 <li><a href="index.html" class="hover:text-theme-primary transition-colors">Home</a></li>
                 <li><a href="portfolio.html" class="hover:text-theme-primary transition-colors">Portfolio</a></li>
@@ -48,10 +53,20 @@
                 <li><a href="contact.html" class="hover:text-theme-primary transition-colors">Contact</a></li>
             </ul>
         </div>
+        <!-- Mobile navigation -->
+        <div class="lg:hidden hidden" id="mobile-menu">
+            <div class="px-4 pt-2 pb-3 space-y-1 bg-theme-secondary/95 backdrop-blur-sm">
+                <a href="index.html" class="block px-3 py-2 hover:text-theme-primary transition-colors">Home</a>
+                <a href="portfolio.html" class="block px-3 py-2 hover:text-theme-primary transition-colors">Portfolio</a>
+                <a href="commissions.html" class="block px-3 py-2 hover:text-theme-primary transition-colors">Commissions</a>
+                <a href="about.html" class="block px-3 py-2 hover:text-theme-primary transition-colors">About</a>
+                <a href="contact.html" class="block px-3 py-2 hover:text-theme-primary transition-colors">Contact</a>
+            </div>
+        </div>
     </nav>
 
     <!-- Main Content -->
-    <main class="pt-24 pb-32">
+    <main class="pt-32 pb-20">
         <div class="container mx-auto max-w-6xl px-4">
             <!-- About Section -->
             <section class="bg-theme-secondary/50 rounded-lg p-8 mb-12">
@@ -85,46 +100,97 @@
                 </div>
             </section>
 
-<!-- Skills Section -->
-<section class="grid md:grid-cols-3 gap-8">
-    <!-- 3D Modeling Card -->
-    <div class="bg-theme-secondary/50 p-6 rounded-lg border border-theme-primary/10 hover:border-theme-primary/30 transition-all">
-        <h3 class="text-xl font-bold mb-4 text-theme-primary">Blender</h3>
-        <ul class="space-y-2 opacity-80">
-            <li>Character Modeling</li>
-            <li>Environmental Modeling</li>
-            <li>Hard Surface Modeling</li>
-            <li>Rigging</li>
-        </ul>
-    </div>
+            <!-- Skills Section -->
+            <section class="grid md:grid-cols-3 gap-8">
+                <!-- 3D Modeling Card -->
+                <div class="bg-theme-secondary/50 p-6 rounded-lg border border-theme-primary/10 hover:border-theme-primary/30 transition-all">
+                    <h3 class="text-xl font-bold mb-4 text-theme-primary">Blender</h3>
+                    <ul class="space-y-2 opacity-80">
+                        <li>Character Modeling</li>
+                        <li>Environmental Modeling</li>
+                        <li>Hard Surface Modeling</li>
+                        <li>Rigging</li>
+                    </ul>
+                </div>
 
-    <!-- Materials Card -->
-    <div class="bg-theme-secondary/50 p-6 rounded-lg border border-theme-primary/10 hover:border-theme-primary/30 transition-all">
-        <h3 class="text-xl font-bold mb-4 text-theme-primary">Texturing</h3>
-        <ul class="space-y-2 opacity-80">
-            <li>Blender Procedural Shaders</li>
-            <li>Substance Painter</li>
-            <li>Photoshop</li>
-        </ul>
-    </div>
+                <!-- Materials Card -->
+                <div class="bg-theme-secondary/50 p-6 rounded-lg border border-theme-primary/10 hover:border-theme-primary/30 transition-all">
+                    <h3 class="text-xl font-bold mb-4 text-theme-primary">Texturing</h3>
+                    <ul class="space-y-2 opacity-80">
+                        <li>Blender Procedural Shaders</li>
+                        <li>Substance Painter</li>
+                        <li>Photoshop</li>
+                    </ul>
+                </div>
 
-    <!-- Unreal Card -->
-    <div class="bg-theme-secondary/50 p-6 rounded-lg border border-theme-primary/10 hover:border-theme-primary/30 transition-all">
-        <h3 class="text-xl font-bold mb-4 text-theme-primary">Unreal Engine</h3>
-        <ul class="space-y-2 opacity-80">
-            <li>Rig Retargeting</li>
-            <li>Procedural Materials</li>
-            <li>Vertx Painting for Environments</li>
-            <li>Modular Material Instancing</li>
-            <li>Niagara Particle Systems</li>
-        </ul>
-    </div>
+                <!-- Unreal Card -->
+                <div class="bg-theme-secondary/50 p-6 rounded-lg border border-theme-primary/10 hover:border-theme-primary/30 transition-all">
+                    <h3 class="text-xl font-bold mb-4 text-theme-primary">Unreal Engine</h3>
+                    <ul class="space-y-2 opacity-80">
+                        <li>Rig Retargeting</li>
+                        <li>Procedural Materials</li>
+                        <li>Vertx Painting for Environments</li>
+                        <li>Modular Material Instancing</li>
+                        <li>Niagara Particle Systems</li>
+                    </ul>
+                </div>
+            </section>
 
-</section>
+            <!-- Testimonials Section -->
+            <section class="mt-20">
+                <h2 class="text-3xl font-bold mb-12 text-center">
+                    Client <span class="text-theme-primary">Testimonials</span>
+                </h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Testimonial 1 -->
+                    <div class="bg-theme-secondary/50 p-6 rounded-lg border border-theme-primary/10">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-theme-primary/20 flex items-center justify-center mr-4">
+                                <span class="text-xl font-bold text-theme-primary">JD</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">John Doe</h4>
+                                <p class="text-sm opacity-60">Game Developer</p>
+                            </div>
+                        </div>
+                        <p class="opacity-80">"Clay's attention to detail and ability to bring our characters to life was exceptional. His work exceeded our expectations and helped elevate our game's visual quality."</p>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div class="bg-theme-secondary/50 p-6 rounded-lg border border-theme-primary/10">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-theme-primary/20 flex items-center justify-center mr-4">
+                                <span class="text-xl font-bold text-theme-primary">AS</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Alice Smith</h4>
+                                <p class="text-sm opacity-60">Animation Director</p>
+                            </div>
+                        </div>
+                        <p class="opacity-80">"Working with Clay was a game-changer for our animation project. His models were not just visually stunning but also perfectly optimized for our pipeline."</p>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div class="bg-theme-secondary/50 p-6 rounded-lg border border-theme-primary/10">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-theme-primary/20 flex items-center justify-center mr-4">
+                                <span class="text-xl font-bold text-theme-primary">MJ</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Mike Johnson</h4>
+                                <p class="text-sm opacity-60">VR Experience Designer</p>
+                            </div>
+                        </div>
+                        <p class="opacity-80">"Clay's expertise in creating immersive 3D environments was crucial for our VR project. His attention to detail and technical knowledge made him an invaluable asset."</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
 
     <!-- Footer -->
-    <footer class="fixed bottom-0 left-0 right-0 bg-theme-secondary/95 backdrop-blur-sm py-6">
-        <div class="container mx-auto max-w-6xl px-4 text-center opacity-60">
+    <footer class="bg-theme-secondary/95 py-6">
+        <div class="container mx-auto px-4 text-center opacity-60">
             <p>&copy; 2025 Clay MacDonald | 3D Artist</p>
         </div>
     </footer>

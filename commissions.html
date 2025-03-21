@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/main.js" defer></script>
     <script src="js/transitions.js" defer></script>
+    <script src="js/mobile-menu.js" defer></script>
     
     <script>
         tailwind.config = {
@@ -39,7 +40,11 @@
             <a href="index.html" class="text-2xl font-bold">
                 <span class="text-theme-primary">Clay MacDonald</span>
             </a>
-            
+            <!-- Mobile menu button -->
+            <button class="lg:hidden text-theme-light hover:text-theme-primary transition-colors" id="mobile-menu-button">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+            <!-- Desktop navigation -->
             <ul class="hidden lg:flex space-x-8">
                 <li><a href="index.html" class="hover:text-theme-primary transition-colors">Home</a></li>
                 <li><a href="portfolio.html" class="hover:text-theme-primary transition-colors">Portfolio</a></li>
@@ -47,6 +52,16 @@
                 <li><a href="about.html" class="hover:text-theme-primary transition-colors">About</a></li>
                 <li><a href="contact.html" class="hover:text-theme-primary transition-colors">Contact</a></li>
             </ul>
+        </div>
+        <!-- Mobile navigation -->
+        <div class="lg:hidden hidden" id="mobile-menu">
+            <div class="px-4 pt-2 pb-3 space-y-1 bg-theme-secondary/95 backdrop-blur-sm">
+                <a href="index.html" class="block px-3 py-2 hover:text-theme-primary transition-colors">Home</a>
+                <a href="portfolio.html" class="block px-3 py-2 hover:text-theme-primary transition-colors">Portfolio</a>
+                <a href="commissions.html" class="block px-3 py-2 hover:text-theme-primary transition-colors">Commissions</a>
+                <a href="about.html" class="block px-3 py-2 hover:text-theme-primary transition-colors">About</a>
+                <a href="contact.html" class="block px-3 py-2 hover:text-theme-primary transition-colors">Contact</a>
+            </div>
         </div>
     </nav>
 
@@ -64,69 +79,91 @@
                 </p>
             </section>
 
-            <!-- Commission Packages -->
-            <div class="grid md:grid-cols-3 gap-8 mb-16">
-                <!-- Basic Package -->
-                <div class="bg-theme-secondary/50 p-6 rounded-lg border border-theme-primary/10 hover:border-theme-primary/30 transition-all">
-                    <h3 class="text-2xl font-bold mb-4 text-theme-primary">Basic</h3>
-                    <ul class="space-y-3 mb-6 text-theme-light/80">
-                        <li>Single Character/Object</li>
-                        <li>Basic Texturing</li>
-                        <li>2 Revision Rounds</li>
-                        <li>5-7 Day Delivery</li>
-                    </ul>
-                    <a href="contact.html" class="block text-center px-6 py-3 bg-theme-primary text-theme-dark font-bold rounded hover:bg-theme-accent transition-colors">
-                        Get Started
-                    </a>
-                </div>
+            <!-- What I Offer Section -->
+            <section class="mb-16">
+                <h2 class="text-3xl font-bold mb-8">What I <span class="text-theme-primary">Offer</span></h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Character Modeling -->
+                    <div class="bg-theme-secondary/50 p-6 rounded-lg border border-theme-primary/10 hover:border-theme-primary/30 transition-all">
+                        <h3 class="text-2xl font-bold mb-4 text-theme-primary">Character Modeling</h3>
+                        <ul class="space-y-3 text-theme-light/80">
+                            <li>• High-detail character models</li>
+                            <li>• Custom rigging and weight painting</li>
+                            <li>• UV mapping and texturing</li>
+                            <li>• Material setup and optimization</li>
+                        </ul>
+                    </div>
 
-                <!-- Standard Package -->
-                <div class="bg-theme-secondary/50 p-6 rounded-lg border border-theme-primary/10 hover:border-theme-primary/30 transition-all">
-                    <h3 class="text-2xl font-bold mb-4 text-theme-primary">Standard</h3>
-                    <ul class="space-y-3 mb-6 text-theme-light/80">
-                        <li>Complex Character/Scene</li>
-                        <li>Advanced Texturing</li>
-                        <li>3 Revision Rounds</li>
-                        <li>7-10 Day Delivery</li>
-                    </ul>
-                    <a href="contact.html" class="block text-center px-6 py-3 bg-theme-primary text-theme-dark font-bold rounded hover:bg-theme-accent transition-colors">
-                        Get Started
-                    </a>
-                </div>
+                    <!-- Environment Design -->
+                    <div class="bg-theme-secondary/50 p-6 rounded-lg border border-theme-primary/10 hover:border-theme-primary/30 transition-all">
+                        <h3 class="text-2xl font-bold mb-4 text-theme-primary">Environment Design</h3>
+                        <ul class="space-y-3 text-theme-light/80">
+                            <li>• Full environment creation</li>
+                            <li>• Modular asset design</li>
+                            <li>• Material and texture creation</li>
+                            <li>• Lighting and atmosphere setup</li>
+                        </ul>
+                    </div>
 
-                <!-- Premium Package -->
-                <div class="bg-theme-secondary/50 p-6 rounded-lg border border-theme-primary/10 hover:border-theme-primary/30 transition-all">
-                    <h3 class="text-2xl font-bold mb-4 text-theme-primary">Premium</h3>
-                    <ul class="space-y-3 mb-6 text-theme-light/80">
-                        <li>Full Environment/Animation</li>
-                        <li>Premium Materials & Effects</li>
-                        <li>Unlimited Revisions</li>
-                        <li>Custom Timeline</li>
-                    </ul>
-                    <a href="contact.html" class="block text-center px-6 py-3 bg-theme-primary text-theme-dark font-bold rounded hover:bg-theme-accent transition-colors">
-                        Get Started
-                    </a>
+                    <!-- Prop Modeling -->
+                    <div class="bg-theme-secondary/50 p-6 rounded-lg border border-theme-primary/10 hover:border-theme-primary/30 transition-all">
+                        <h3 class="text-2xl font-bold mb-4 text-theme-primary">Prop Modeling</h3>
+                        <ul class="space-y-3 text-theme-light/80">
+                            <li>• Detailed prop creation</li>
+                            <li>• Hard surface modeling</li>
+                            <li>• Texture and material design</li>
+                            <li>• Game-ready optimization</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
+            </section>
 
-            <!-- Process Section -->
+            <!-- Commission Process -->
             <section class="bg-theme-secondary/30 rounded-lg p-8">
                 <h2 class="text-3xl font-bold mb-8">Commission <span class="text-theme-primary">Process</span></h2>
-                <div class="grid md:grid-cols-4 gap-6">
-                    <div class="space-y-3">
+                <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
+                    <div class="space-y-4">
                         <div class="text-4xl text-theme-primary mb-2">01</div>
-                        <h3 class="text-xl font-bold">Discussion</h3>
-                        <p class="text-theme-light/60">Initial consultation to understand your needs</p>
+                        <h3 class="text-xl font-bold">Initial Discussion</h3>
+                        <p class="text-theme-light/60">We'll discuss your project requirements, timeline, and budget to ensure we're aligned on the vision.</p>
                     </div>
-                    <!-- Add more process steps as needed -->
+                    <div class="space-y-4">
+                        <div class="text-4xl text-theme-primary mb-2">02</div>
+                        <h3 class="text-xl font-bold">Planning</h3>
+                        <p class="text-theme-light/60">I'll outline the technical approach and create a detailed plan for your project, including milestones and deliverables.</p>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="text-4xl text-theme-primary mb-2">03</div>
+                        <h3 class="text-xl font-bold">Development</h3>
+                        <p class="text-theme-light/60">Regular updates and progress reports as I work on your project, with opportunities for feedback.</p>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="text-4xl text-theme-primary mb-2">04</div>
+                        <h3 class="text-xl font-bold">Revision</h3>
+                        <p class="text-theme-light/60">Review and refine the work based on your feedback, ensuring the final product meets your expectations.</p>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="text-4xl text-theme-primary mb-2">05</div>
+                        <h3 class="text-xl font-bold">Delivery</h3>
+                        <p class="text-theme-light/60">Final delivery of your project with any necessary adjustments and support for implementation.</p>
+                    </div>
                 </div>
+            </section>
+
+            <!-- Call to Action -->
+            <section class="mt-16 text-center">
+                <h2 class="text-3xl font-bold mb-6">Ready to Start Your Project?</h2>
+                <p class="text-xl text-theme-light/60 mb-8">Let's create something amazing together</p>
+                <a href="contact.html" class="inline-block px-8 py-4 bg-theme-primary text-theme-dark font-bold rounded-lg hover:bg-theme-accent transition-colors">
+                    Get in Touch
+                </a>
             </section>
         </div>
     </main>
 
     <!-- Footer -->
-    <footer class="fixed bottom-0 left-0 right-0 bg-theme-secondary/95 backdrop-blur-sm py-6">
-        <div class="container mx-auto max-w-6xl px-4 text-center opacity-60">
+    <footer class="bg-theme-secondary/95 py-6">
+        <div class="container mx-auto px-4 text-center opacity-60">
             <p>&copy; 2025 Clay MacDonald | 3D Artist</p>
         </div>
     </footer>

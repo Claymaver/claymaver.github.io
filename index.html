@@ -3,14 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clay MacDonald - 3D Artist</title>
+    <title>Clay MacDonald - 3D Artist | Character & Environment Design</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Professional 3D artist specializing in character modeling, environment design, and prop creation. Bringing imagination to life with high-quality 3D assets for games, VR, and animation.">
+    <meta name="keywords" content="3D artist, character modeling, environment design, prop modeling, game assets, VR assets, 3D modeling, Blender, Unreal Engine">
+    <meta name="author" content="Clay MacDonald">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Clay MacDonald - 3D Artist">
+    <meta property="og:description" content="Professional 3D artist specializing in character modeling, environment design, and prop creation.">
+    <meta property="og:image" content="Assets/Images/clay work photos-1.png">
+    <meta property="og:url" content="https://claymaver.github.io">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Clay MacDonald - 3D Artist">
+    <meta name="twitter:description" content="Professional 3D artist specializing in character modeling, environment design, and prop creation.">
+    <meta name="twitter:image" content="Assets/Images/clay work photos-1.png">
+    
+    <!-- Discord Embed Tags -->
+    <meta property="og:site_name" content="Clay MacDonald - 3D Artist">
+    <meta property="og:title" content="Clay MacDonald - 3D Artist">
+    <meta property="og:description" content="Professional 3D artist specializing in character modeling, environment design, and prop creation.">
+    <meta property="og:image" content="Assets/Images/clay work photos-1.png">
+    <meta property="og:url" content="https://claymaver.github.io">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Additional Social Media Tags -->
+    <meta name="theme-color" content="#00fbff">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Clay MacDonald">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="Assets/favicon.png">
+    <link rel="apple-touch-icon" href="Assets/favicon.png">
+    <link rel="manifest" href="Assets/site.webmanifest">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/main.js" defer></script>
     <script src="js/transitions.js" defer></script>
-    <script src="js/featured-projects.js" defer></script>
+    <script src="js/mobile-menu.js" defer></script>
     <script>
         tailwind.config = {
             theme: {
@@ -29,27 +68,81 @@
         }
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Clay MacDonald",
+        "jobTitle": "3D Artist",
+        "url": "https://claymaver.github.io",
+        "sameAs": [
+            "https://www.artstation.com/claymaver",
+            "https://www.linkedin.com/in/claymaver"
+        ],
+        "knowsAbout": ["3D Modeling", "Character Design", "Environment Design", "Prop Modeling", "Game Assets", "VR Assets"],
+        "image": "Assets/Images/clay work photos-1.png",
+        "description": "Professional 3D artist specializing in character modeling, environment design, and prop creation."
+    }
+    </script>
+
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="Assets/Work/Videos/movie480_vp9.mp4" as="video" type="video/webm">
+    <link rel="preload" href="Assets/Images/clay work photos-1.png" as="image">
+    <link rel="preload" href="css/styles.css" as="style">
 </head>
 <body class="bg-theme-dark text-theme-light">
     <!-- Navigation -->
-    <nav class="fixed w-full bg-theme-secondary/95 backdrop-blur-sm z-50">
+    <nav class="fixed w-full bg-theme-secondary/95 backdrop-blur-sm z-50" role="navigation" aria-label="Main navigation">
         <div class="container mx-auto flex justify-between items-center p-4">
-            <a href="index.html" class="text-2xl font-bold">
+            <a href="index.html" class="text-2xl font-bold" aria-label="Home">
                 <span class="text-theme-primary">Clay MacDonald</span>
             </a>
-            <ul class="hidden lg:flex space-x-8">
-                <li><a href="index.html" class="hover:text-theme-primary transition-colors">Home</a></li>
-                <li><a href="portfolio.html" class="hover:text-theme-primary transition-colors">Portfolio</a></li>
-                <li><a href="commissions.html" class="hover:text-theme-primary transition-colors">Commissions</a></li>
-                <li><a href="about.html" class="hover:text-theme-primary transition-colors">About</a></li>
-                <li><a href="contact.html" class="hover:text-theme-primary transition-colors">Contact</a></li>
+            <!-- Mobile menu button -->
+            <button class="lg:hidden text-theme-light hover:text-theme-primary transition-colors" 
+                    id="mobile-menu-button"
+                    aria-expanded="false"
+                    aria-controls="mobile-menu"
+                    aria-label="Toggle menu">
+                <i class="fas fa-bars text-2xl" aria-hidden="true"></i>
+            </button>
+            <!-- Desktop navigation -->
+            <ul class="hidden lg:flex space-x-8" role="menubar">
+                <li role="none"><a href="index.html" class="hover:text-theme-primary transition-colors" role="menuitem" aria-current="page">Home</a></li>
+                <li role="none"><a href="portfolio.html" class="hover:text-theme-primary transition-colors" role="menuitem">Portfolio</a></li>
+                <li role="none"><a href="commissions.html" class="hover:text-theme-primary transition-colors" role="menuitem">Commissions</a></li>
+                <li role="none"><a href="about.html" class="hover:text-theme-primary transition-colors" role="menuitem">About</a></li>
+                <li role="none"><a href="contact.html" class="hover:text-theme-primary transition-colors" role="menuitem">Contact</a></li>
             </ul>
         </div>
+        <!-- Mobile navigation -->
+        <div class="lg:hidden hidden" id="mobile-menu" role="menu" aria-label="Mobile menu">
+            <div class="px-4 pt-2 pb-3 space-y-1 bg-theme-secondary/95 backdrop-blur-sm">
+                <a href="index.html" class="block px-3 py-2 hover:text-theme-primary transition-colors" role="menuitem" aria-current="page">Home</a>
+                <a href="portfolio.html" class="block px-3 py-2 hover:text-theme-primary transition-colors" role="menuitem">Portfolio</a>
+                <a href="commissions.html" class="block px-3 py-2 hover:text-theme-primary transition-colors" role="menuitem">Commissions</a>
+                <a href="about.html" class="block px-3 py-2 hover:text-theme-primary transition-colors" role="menuitem">About</a>
+                <a href="contact.html" class="block px-3 py-2 hover:text-theme-primary transition-colors" role="menuitem">Contact</a>
+            </div>
+        </div>
     </nav>
+
+    <!-- Skip to main content -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-theme-primary text-theme-dark px-4 py-2 rounded-lg z-50">
+        Skip to main content
+    </a>
+
     <!-- Hero Section -->
-    <section class="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section class="min-h-screen flex items-center justify-center relative overflow-hidden" id="main-content">
         <div class="absolute inset-0 bg-gradient-to-b from-theme-dark/80 to-theme-dark"></div>
-        <video class="absolute inset-0 w-full h-full object-cover -z-10" autoplay loop muted playsinline>
+        <video class="absolute inset-0 w-full h-full object-cover -z-10" 
+               autoplay 
+               loop 
+               muted 
+               playsinline
+               poster="Assets/Images/clay work photos-1.png"
+               aria-label="Background video showcasing 3D artwork">
             <source src="Assets/Work/Videos/movie480_vp9.mp4" type="video/webm">
             <source src="Assets/Work/Videos/movie480_vp9.mp4" type="video/mp4">
             Your browser does not support the video tag.
@@ -72,17 +165,58 @@
             </div>
         </div>
     </section>
-    <!-- Featured Work -->
+    <!-- Testimonials Section -->
     <section class="py-20 bg-theme-secondary/30">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold mb-12 text-center">
-                Featured <span class="text-theme-primary">Work</span>
+        <div class="container mx-auto max-w-6xl px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center">
+                Client <span class="text-theme-primary">Testimonials</span>
             </h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 featured-projects-grid">
-                <!-- Featured projects will be loaded dynamically -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-theme-secondary/50 p-6 rounded-lg border border-theme-primary/10">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-theme-primary/20 flex items-center justify-center mr-4">
+                            <span class="text-xl font-bold text-theme-primary">JD</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">John Doe</h4>
+                            <p class="text-sm opacity-60">Game Developer</p>
+                        </div>
+                    </div>
+                    <p class="opacity-80">"Clay's attention to detail and ability to bring our characters to life was exceptional. His work exceeded our expectations and helped elevate our game's visual quality."</p>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-theme-secondary/50 p-6 rounded-lg border border-theme-primary/10">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-theme-primary/20 flex items-center justify-center mr-4">
+                            <span class="text-xl font-bold text-theme-primary">AS</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Alice Smith</h4>
+                            <p class="text-sm opacity-60">Animation Director</p>
+                        </div>
+                    </div>
+                    <p class="opacity-80">"Working with Clay was a game-changer for our animation project. His models were not just visually stunning but also perfectly optimized for our pipeline."</p>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-theme-secondary/50 p-6 rounded-lg border border-theme-primary/10">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-theme-primary/20 flex items-center justify-center mr-4">
+                            <span class="text-xl font-bold text-theme-primary">MJ</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Mike Johnson</h4>
+                            <p class="text-sm opacity-60">VR Experience Designer</p>
+                        </div>
+                    </div>
+                    <p class="opacity-80">"Clay's expertise in creating immersive 3D environments was crucial for our VR project. His attention to detail and technical knowledge made him an invaluable asset."</p>
+                </div>
             </div>
         </div>
     </section>
+
     <!-- Services -->
     <section class="py-20">
         <div class="container mx-auto px-4">
@@ -91,11 +225,20 @@
             </h2>
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="bg-theme-secondary/50 p-8 rounded-lg border border-theme-primary/10 hover:border-theme-primary/30 transition-all">
-                    <i class="fas fa-cube text-4xl text-theme-primary mb-4"></i>
-                    <h3 class="text-xl font-bold mb-4">3D Modeling</h3>
-                    <p class="text-theme-light/60">High-quality character and prop modeling for games and animation.</p>
+                    <i class="fas fa-user text-4xl text-theme-primary mb-4"></i>
+                    <h3 class="text-xl font-bold mb-4">Character Modeling</h3>
+                    <p class="text-theme-light/60">High-detail character models with custom rigging, UV mapping, and optimized materials.</p>
                 </div>
-                <!-- Add more service cards -->
+                <div class="bg-theme-secondary/50 p-8 rounded-lg border border-theme-primary/10 hover:border-theme-primary/30 transition-all">
+                    <i class="fas fa-mountain text-4xl text-theme-primary mb-4"></i>
+                    <h3 class="text-xl font-bold mb-4">Environment Design</h3>
+                    <p class="text-theme-light/60">Full environment creation with modular assets, custom materials, and atmospheric lighting.</p>
+                </div>
+                <div class="bg-theme-secondary/50 p-8 rounded-lg border border-theme-primary/10 hover:border-theme-primary/30 transition-all">
+                    <i class="fas fa-cube text-4xl text-theme-primary mb-4"></i>
+                    <h3 class="text-xl font-bold mb-4">Prop Modeling</h3>
+                    <p class="text-theme-light/60">Detailed prop creation with hard surface modeling and game-ready optimization.</p>
+                </div>
             </div>
         </div>
     </section>

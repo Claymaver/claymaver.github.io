@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+Allow: /portfolio.html
+Allow: /commissions.html
+Allow: /about.html
+Allow: /contact.html
+Allow: /Assets/Images/
+Allow: /Assets/Work/
+Disallow: /Assets/Work/Videos/
+Disallow: /Assets/Work/Images/
+Disallow: /js/
+Disallow: /css/
+
+Sitemap: https://claymaver.github.io/sitemap.xml 

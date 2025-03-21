@@ -13,6 +13,7 @@
     <script src="js/main.js" defer></script>
     <script src="js/project-details.js" defer></script>
     <script src="js/transitions.js" defer></script>
+    <script src="js/mobile-menu.js" defer></script>
     
     <script>
         tailwind.config = {
@@ -39,7 +40,11 @@
             <a href="index.html" class="text-2xl font-bold">
                 <span class="text-theme-primary">Clay MacDonald</span>
             </a>
-            
+            <!-- Mobile menu button -->
+            <button class="lg:hidden text-theme-light hover:text-theme-primary transition-colors" id="mobile-menu-button">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+            <!-- Desktop navigation -->
             <ul class="hidden lg:flex space-x-8">
                 <li><a href="index.html" class="hover:text-theme-primary transition-colors">Home</a></li>
                 <li><a href="portfolio.html" class="hover:text-theme-primary transition-colors">Portfolio</a></li>
@@ -47,6 +52,16 @@
                 <li><a href="about.html" class="hover:text-theme-primary transition-colors">About</a></li>
                 <li><a href="contact.html" class="hover:text-theme-primary transition-colors">Contact</a></li>
             </ul>
+        </div>
+        <!-- Mobile navigation -->
+        <div class="lg:hidden hidden" id="mobile-menu">
+            <div class="px-4 pt-2 pb-3 space-y-1 bg-theme-secondary/95 backdrop-blur-sm">
+                <a href="index.html" class="block px-3 py-2 hover:text-theme-primary transition-colors">Home</a>
+                <a href="portfolio.html" class="block px-3 py-2 hover:text-theme-primary transition-colors">Portfolio</a>
+                <a href="commissions.html" class="block px-3 py-2 hover:text-theme-primary transition-colors">Commissions</a>
+                <a href="about.html" class="block px-3 py-2 hover:text-theme-primary transition-colors">About</a>
+                <a href="contact.html" class="block px-3 py-2 hover:text-theme-primary transition-colors">Contact</a>
+            </div>
         </div>
     </nav>
 
@@ -67,8 +82,8 @@
     </main>
 
     <!-- Footer -->
-    <footer class="fixed bottom-0 left-0 right-0 bg-theme-secondary/95 backdrop-blur-sm py-6">
-        <div class="container mx-auto max-w-6xl px-4 text-center opacity-60">
+    <footer class="bg-theme-secondary/95 py-6">
+        <div class="container mx-auto px-4 text-center opacity-60">
             <p>&copy; 2025 Clay MacDonald | 3D Artist</p>
         </div>
     </footer>

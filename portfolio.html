@@ -13,6 +13,7 @@
     <script src="js/main.js" defer></script>
     <script src="js/portfolio.js" defer></script>
     <script src="js/transitions.js" defer></script>
+    <script src="js/mobile-menu.js" defer></script>
     
     <script>
         tailwind.config = {
@@ -40,7 +41,11 @@
             <a href="index.html" class="text-2xl font-bold">
                 <span class="text-theme-primary">Clay MacDonald</span>
             </a>
-            
+            <!-- Mobile menu button -->
+            <button class="lg:hidden text-theme-light hover:text-theme-primary transition-colors" id="mobile-menu-button">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+            <!-- Desktop navigation -->
             <ul class="hidden lg:flex space-x-8">
                 <li><a href="index.html" class="hover:text-theme-primary transition-colors">Home</a></li>
                 <li><a href="portfolio.html" class="hover:text-theme-primary transition-colors">Portfolio</a></li>
@@ -49,11 +54,21 @@
                 <li><a href="contact.html" class="hover:text-theme-primary transition-colors">Contact</a></li>
             </ul>
         </div>
+        <!-- Mobile navigation -->
+        <div class="lg:hidden hidden" id="mobile-menu">
+            <div class="px-4 pt-2 pb-3 space-y-1 bg-theme-secondary/95 backdrop-blur-sm">
+                <a href="index.html" class="block px-3 py-2 hover:text-theme-primary transition-colors">Home</a>
+                <a href="portfolio.html" class="block px-3 py-2 hover:text-theme-primary transition-colors">Portfolio</a>
+                <a href="commissions.html" class="block px-3 py-2 hover:text-theme-primary transition-colors">Commissions</a>
+                <a href="about.html" class="block px-3 py-2 hover:text-theme-primary transition-colors">About</a>
+                <a href="contact.html" class="block px-3 py-2 hover:text-theme-primary transition-colors">Contact</a>
+            </div>
+        </div>
     </nav>
 
     <!-- Portfolio Header -->
-    <section class="pt-32 pb-20 px-4">
-        <div class="container mx-auto max-w-6xl">
+    <section class="pt-32 pb-20">
+        <div class="container mx-auto max-w-6xl px-4">
             <h1 class="text-5xl font-bold mb-8">
                 My <span class="text-theme-primary">Portfolio</span>
             </h1>
@@ -71,8 +86,8 @@
     </section>
 
     <!-- Call to Action -->
-    <section class="py-20 px-4 bg-theme-secondary/30">
-        <div class="container mx-auto max-w-4xl text-center">
+    <section class="py-20 bg-theme-secondary/30">
+        <div class="container mx-auto max-w-4xl px-4 text-center">
             <h2 class="text-3xl font-bold mb-6">Ready to Start Your Project?</h2>
             <p class="text-theme-light/60 mb-8">Let's create something amazing together</p>
             <a href="contact.html" class="px-8 py-3 bg-theme-primary text-theme-dark font-bold rounded hover:bg-theme-accent transition-colors">
@@ -82,8 +97,8 @@
     </section>
 
     <!-- Footer -->
-    <footer class="fixed bottom-0 left-0 right-0 bg-theme-secondary/95 backdrop-blur-sm py-6">
-        <div class="container mx-auto max-w-6xl px-4 text-center opacity-60">
+    <footer class="bg-theme-secondary/95 py-6">
+        <div class="container mx-auto px-4 text-center opacity-60">
             <p>&copy; 2025 Clay MacDonald | 3D Artist</p>
         </div>
     </footer>
