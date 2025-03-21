@@ -44,7 +44,7 @@
                 }
             ],
             "specifications": {
-                "polycount": "15,000 triangles",
+                "polycount": "54,810 triangles",
                 "textureResolution": "2K PBR textures",
                 "rigging": "Full rig controls"
             }
