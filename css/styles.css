@@ -242,3 +242,24 @@ html, body {
     white-space: normal;
     z-index: 9999;
 }
+
+/* Software Icon Styles */
+.software-icon {
+    width: 2rem;
+    height: 2rem;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.software-icon:hover {
+    opacity: 1;
+}
+
+/* Unity specific icon */
+.software-icon[alt="Unity"] {
+    opacity: 1;
+}
+
+.software-icon[alt="Unity"]:hover {
+    opacity: 0.8;
+}

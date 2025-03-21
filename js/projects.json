@@ -1,76 +1,53 @@
 {
     "projects": [
         {
-            "id": "1",
-            "title": "Project Title 1",
-            "category": "3D Models",
-            "image": "https://placehold.co/800x800/2A2D3A/00fbff?text=Project+1",
-            "description": "Brief project description that gives an overview of the work.",
-            "tags": ["Character", "Blender", "Rigging"],
+            "id": 1,
+            "title": "H.A.M.P.T.E.R.",
+            "description": "Retro-futuristic robot design for the game Neon Overdrive",
+            "image": "Assets/Projects/Hampter/Hampter Cover.png",
+            "category": "Characters",
+            "featured": true,
+            "software": ["Blender", "Substance Painter", "Unreal Engine"],
+            "tags": ["Character", "Sci-Fi", "Hard Surface"],
             "details": [
                 {
-                    "title": "The Challenge",
-                    "content": "Detailed description of the project challenges and requirements."
-                },
-                {
-                    "title": "The Process",
-                    "content": "Explanation of the creative and technical process used."
+                    "title": "Overview",
+                    "content": "H.A.M.P.T.E.R. is a retro-futuristic robot designed for the game Neon Overdrive. Comprised of nostalgic 80s sci-fi aesthetics."
                 },
                 {
                     "title": "Technical Details",
-                    "content": "Software used: Blender, Substance Painter, etc."
+                    "content": "The model was created using Blender for the base mesh and then rigging, Textured in Substance Painter. The final implementation and material setup was done in Unreal Engine, featuring dynamic lighting and PBR materials."
+                },
+                {
+                    "title": "Key Features",
+                    "content": "• Modular design\n• Advanced material system with dynamic wear and tear\n• Each weapon system has a damaged counterpart"
                 }
             ],
             "gallery": [
                 {
-                    "url": "https://placehold.co/800x600/2A2D3A/00fbff?text=Detail+1",
-                    "caption": "Early concept development"
+                    "url": "Assets/Projects/Hampter/Hampter Front.png"
                 },
                 {
-                    "url": "https://placehold.co/800x600/2A2D3A/00fbff?text=Detail+2",
-                    "caption": "Wireframe view"
+                    "url": "Assets/Projects/Hampter/Hampter Side.png"
                 },
                 {
-                    "url": "https://placehold.co/800x600/2A2D3A/00fbff?text=Detail+3",
-                    "caption": "Final render"
-                }
-            ]
-        },
-        {
-            "id": "2",
-            "title": "Project Title 2",
-            "category": "Animations",
-            "image": "https://placehold.co/800x800/2A2D3A/00fbff?text=Project+2",
-            "description": "Brief project description that gives an overview of the work.",
-            "tags": ["Animation", "Motion", "Character"],
-            "details": [
-                {
-                    "title": "The Challenge",
-                    "content": "Detailed description of the project challenges and requirements."
+                    "url": "Assets/Projects/Hampter/Hampter Detail.png"
                 },
                 {
-                    "title": "The Process",
-                    "content": "Explanation of the creative and technical process used."
+                    "url": "Assets/Projects/Hampter/Front View Damaged.png"
+                },
+                {
+                    "url": "Assets/Projects/Hampter/Side View Damaged.png"
+                },
+                {
+                    "url": "Assets/Projects/Hampter/Back View Damaged.png"
                 }
             ],
-            "gallery": [
-                {
-                    "url": "https://placehold.co/800x600/2A2D3A/00fbff?text=Detail+1",
-                    "caption": "Animation keyframes"
-                },
-                {
-                    "url": "https://placehold.co/800x600/2A2D3A/00fbff?text=Detail+2",
-                    "caption": "Final scene"
-                }
-            ]
-        },
-        {
-            "id": "3",
-            "title": "Project Title 3",
-            "category": "Environments",
-            "image": "https://placehold.co/800x800/2A2D3A/00fbff?text=Project+3",
-            "description": "Brief project description",
-            "tags": ["Environment", "Lighting", "Texturing"]
+            "specifications": {
+                "polycount": "15,000 triangles",
+                "textureResolution": "2K PBR textures",
+                "rigging": "Full rig controls"
+            }
         }
     ],
     "categories": [
@@ -79,16 +56,16 @@
             "name": "All Work"
         },
         {
-            "id": "3D Models",
-            "name": "3D Models"
-        },
-        {
-            "id": "Animations",
-            "name": "Animations"
+            "id": "Characters",
+            "name": "Characters"
         },
         {
             "id": "Environments",
             "name": "Environments"
+        },
+        {
+            "id": "Props",
+            "name": "Props"
         }
     ]
 } 

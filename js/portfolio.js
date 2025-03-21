@@ -1,66 +1,5 @@
 let currentCategory = 'all';
-let projects = [
-    {
-        id: 1,
-        title: "Sci-Fi Character",
-        description: "A detailed sci-fi character model with advanced materials and textures",
-        image: "Assets/Projects/Project1.jpg",
-        category: "Characters",
-        featured: true,
-        software: ["Blender", "Substance Painter", "ZBrush"],
-        tags: ["Character", "Sci-Fi", "Hard Surface"]
-    },
-    {
-        id: 2,
-        title: "Fantasy Environment",
-        description: "An immersive fantasy environment with dynamic lighting",
-        image: "Assets/Projects/Project2.jpg",
-        category: "Environments",
-        featured: false,
-        software: ["Blender", "Unreal Engine", "Substance Painter"],
-        tags: ["Environment", "Fantasy", "Lighting"]
-    },
-    {
-        id: 3,
-        title: "Prop Collection",
-        description: "A collection of detailed props for game environments",
-        image: "Assets/Projects/Project3.jpg",
-        category: "Props",
-        featured: false,
-        software: ["Maya", "Substance Painter", "Unity"],
-        tags: ["Props", "Game Assets", "Collection"]
-    },
-    {
-        id: 4,
-        title: "Creature Design",
-        description: "An original creature design with detailed anatomy",
-        image: "Assets/Projects/Project4.jpg",
-        category: "Characters",
-        featured: true,
-        software: ["ZBrush", "Maya", "Substance Painter"],
-        tags: ["Creature", "Anatomy", "Design"]
-    },
-    {
-        id: 5,
-        title: "Urban Scene",
-        description: "A detailed urban environment with modern architecture",
-        image: "Assets/Projects/Project5.jpg",
-        category: "Environments",
-        featured: false,
-        software: ["Blender", "Unreal Engine", "Photoshop"],
-        tags: ["Environment", "Urban", "Architecture"]
-    },
-    {
-        id: 6,
-        title: "Weapon Set",
-        description: "A collection of sci-fi weapons with detailed materials",
-        image: "Assets/Projects/Project6.jpg",
-        category: "Props",
-        featured: false,
-        software: ["Maya", "Substance Painter", "Unity"],
-        tags: ["Weapons", "Sci-Fi", "Collection"]
-    }
-];
+let projects = [];
 let categories = [];
 
 // Function to fetch projects data
@@ -74,6 +13,77 @@ async function fetchProjects() {
         filterProjects(currentCategory);
     } catch (error) {
         console.error('Error loading projects:', error);
+        // Fallback to static data if fetch fails
+        projects = [
+            {
+                id: 1,
+                title: "Sci-Fi Character",
+                description: "A detailed sci-fi character model with advanced materials and textures",
+                image: "Assets/Projects/Project1.jpg",
+                category: "Characters",
+                featured: true,
+                software: ["Blender", "Substance Painter", "ZBrush"],
+                tags: ["Character", "Sci-Fi", "Hard Surface"]
+            },
+            {
+                id: 2,
+                title: "Fantasy Environment",
+                description: "An immersive fantasy environment with dynamic lighting",
+                image: "Assets/Projects/Project2.jpg",
+                category: "Environments",
+                featured: false,
+                software: ["Blender", "Unreal Engine", "Substance Painter"],
+                tags: ["Environment", "Fantasy", "Lighting"]
+            },
+            {
+                id: 3,
+                title: "Prop Collection",
+                description: "A collection of detailed props for game environments",
+                image: "Assets/Projects/Project3.jpg",
+                category: "Props",
+                featured: false,
+                software: ["Maya", "Substance Painter", "Unity"],
+                tags: ["Props", "Game Assets", "Collection"]
+            },
+            {
+                id: 4,
+                title: "Creature Design",
+                description: "An original creature design with detailed anatomy",
+                image: "Assets/Projects/Project4.jpg",
+                category: "Characters",
+                featured: true,
+                software: ["ZBrush", "Maya", "Substance Painter"],
+                tags: ["Creature", "Anatomy", "Design"]
+            },
+            {
+                id: 5,
+                title: "Urban Scene",
+                description: "A detailed urban environment with modern architecture",
+                image: "Assets/Projects/Project5.jpg",
+                category: "Environments",
+                featured: false,
+                software: ["Blender", "Unreal Engine", "Photoshop"],
+                tags: ["Environment", "Urban", "Architecture"]
+            },
+            {
+                id: 6,
+                title: "Weapon Set",
+                description: "A collection of sci-fi weapons with detailed materials",
+                image: "Assets/Projects/Project6.jpg",
+                category: "Props",
+                featured: false,
+                software: ["Maya", "Substance Painter", "Unity"],
+                tags: ["Weapons", "Sci-Fi", "Collection"]
+            }
+        ];
+        categories = [
+            { id: 'all', name: 'All Work' },
+            { id: 'Characters', name: 'Characters' },
+            { id: 'Environments', name: 'Environments' },
+            { id: 'Props', name: 'Props' }
+        ];
+        renderCategories();
+        filterProjects(currentCategory);
     }
 }
 
@@ -116,6 +126,28 @@ function updateCategoryButtons() {
     });
 }
 
+// Function to get software icon path
+function getSoftwareIcon(software) {
+    switch(software.toLowerCase()) {
+        case 'blender':
+            return 'Assets/Icons/blender.png';
+        case 'maya':
+            return 'Assets/Icons/maya.png';
+        case 'zbrush':
+            return 'Assets/Icons/zbrush.png';
+        case 'substance painter':
+            return 'Assets/Icons/substance.png';
+        case 'unreal engine':
+            return 'Assets/Icons/unreal-engine.png';
+        case 'unity':
+            return 'Assets/Icons/unity.png';
+        case 'photoshop':
+            return 'Assets/Icons/photoshop.png';
+        default:
+            return 'Assets/Icons/tools.png';
+    }
+}
+
 // Function to filter and display projects
 function filterProjects(category) {
     const filteredProjects = category === 'all' 
@@ -123,95 +155,44 @@ function filterProjects(category) {
         : projects.filter(project => project.category === category);
     
     const projectsGrid = document.getElementById('projectsGrid');
-    projectsGrid.innerHTML = filteredProjects.map(project => {
-        // Create project card
-        const card = document.createElement('div');
-        card.className = 'group relative' + (project.featured ? ' lg:col-span-2' : '');
-        card.setAttribute('data-category', project.category);
-        card.setAttribute('data-animate', '');
-
-        // Create image container
-        const imageContainer = document.createElement('div');
-        imageContainer.className = 'aspect-square bg-theme-secondary/50 rounded-lg overflow-hidden border border-theme-primary/10 hover:border-theme-primary/30 transition-all relative';
-        
-        // Create image element
-        const img = document.createElement('img');
-        img.src = project.image;
-        img.alt = project.title;
-        img.className = 'w-full h-full object-cover rounded-lg portfolio-image cursor-pointer hover:opacity-90 transition-opacity';
-        img.loading = 'lazy';
-        
-        // Create software icons container
-        const softwareIcons = document.createElement('div');
-        softwareIcons.className = 'absolute bottom-4 left-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300';
-        
-        // Add software icons based on project.software array
-        if (project.software) {
-            project.software.forEach(software => {
-                const icon = document.createElement('div');
-                icon.className = 'bg-theme-secondary/90 p-2 rounded-full backdrop-blur-sm';
-                icon.title = software; // Tooltip on hover
+    projectsGrid.innerHTML = filteredProjects.map(project => `
+        <div class="group relative" data-animate>
+            <div class="aspect-square bg-theme-secondary/50 rounded-lg overflow-hidden border border-theme-primary/10 hover:border-theme-primary/30 transition-all">
+                <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover rounded-lg portfolio-image cursor-pointer hover:opacity-90 transition-opacity">
                 
-                // Add appropriate icon based on software name
-                switch(software.toLowerCase()) {
-                    case 'blender':
-                        icon.innerHTML = '<i class="fas fa-cube text-theme-primary"></i>';
-                        break;
-                    case 'maya':
-                        icon.innerHTML = '<i class="fas fa-dice-d20 text-theme-primary"></i>';
-                        break;
-                    case 'zbrush':
-                        icon.innerHTML = '<i class="fas fa-paint-brush text-theme-primary"></i>';
-                        break;
-                    case 'substance painter':
-                        icon.innerHTML = '<i class="fas fa-palette text-theme-primary"></i>';
-                        break;
-                    case 'unreal engine':
-                        icon.innerHTML = '<i class="fas fa-gamepad text-theme-primary"></i>';
-                        break;
-                    case 'unity':
-                        icon.innerHTML = '<i class="fas fa-cube text-theme-accent"></i>';
-                        break;
-                    case 'photoshop':
-                        icon.innerHTML = '<i class="fas fa-image text-theme-primary"></i>';
-                        break;
-                    default:
-                        icon.innerHTML = '<i class="fas fa-tools text-theme-primary"></i>';
-                }
-                
-                softwareIcons.appendChild(icon);
-            });
-        }
-        
-        // Create hover overlay
-        const overlay = document.createElement('div');
-        overlay.className = 'absolute inset-0 bg-gradient-to-t from-theme-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300';
-        
-        // Create content container
-        const content = document.createElement('div');
-        content.className = 'absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300';
-        
-        // Create title
-        const title = document.createElement('h3');
-        title.className = 'text-xl font-bold mb-2';
-        title.textContent = project.title;
-        
-        // Create description
-        const description = document.createElement('p');
-        description.className = 'text-sm opacity-80';
-        description.textContent = project.description;
-        
-        // Assemble the card
-        content.appendChild(title);
-        content.appendChild(description);
-        imageContainer.appendChild(img);
-        imageContainer.appendChild(softwareIcons);
-        imageContainer.appendChild(overlay);
-        card.appendChild(imageContainer);
-        card.appendChild(content);
-        
-        return card.outerHTML;
-    }).join('');
+                <!-- Hover Overlay -->
+                <div class="absolute inset-0 bg-theme-dark/90 opacity-0 group-hover:opacity-100 transition-all duration-300 p-6 flex flex-col pointer-events-none">
+                    <div class="flex-grow flex flex-col justify-center pointer-events-none">
+                        <h3 class="text-xl font-bold text-theme-primary mb-2">${project.title}</h3>
+                        <h4 class="text-theme-primary/80 mb-4">${project.category}</h4>
+                        <p class="text-theme-light/80 mb-4">${project.description}</p>
+                        <div class="flex flex-wrap gap-2">
+                            ${project.tags.map(tag => `
+                                <span class="text-sm px-2 py-1 bg-theme-primary/10 text-theme-primary rounded">${tag}</span>
+                            `).join('')}
+                        </div>
+                    </div>
+                    <a href="project-details.html?id=${encodeURIComponent(project.id)}" 
+                       class="project-link mt-4 w-full py-2 px-4 bg-theme-primary/10 hover:bg-theme-primary/20 text-theme-primary border border-theme-primary/50 rounded transition-all text-center pointer-events-auto z-10">
+                        View Details
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Static Info (Hidden on Hover) -->
+            <div class="mt-4 group-hover:opacity-0 transition-opacity duration-300">
+                <h3 class="text-xl font-bold mb-2">${project.title}</h3>
+                <p class="text-theme-light/60 mb-2">${project.category}</p>
+                <!-- Software Icons -->
+                <div class="flex gap-3">
+                    ${project.software.map(software => {
+                        const iconPath = getSoftwareIcon(software);
+                        return `<img src="${iconPath}" alt="${software}" class="software-icon" title="${software}">`;
+                    }).join('')}
+                </div>
+            </div>
+        </div>
+    `).join('');
 
     // Reinitialize GSAP animations
     initializeAnimations();

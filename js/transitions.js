@@ -16,36 +16,34 @@ function initPageTransitions() {
     }
 
     // Handle all internal links
-    document.querySelectorAll('a, .project-link').forEach(link => {
+    document.querySelectorAll('a[href], .project-link').forEach(link => {
         // Only handle internal links
-        if (link.href && (link.href.startsWith(window.location.origin) || link.href.startsWith('/'))) {
+        if (link.href && (link.href.startsWith(window.location.origin) || link.href.startsWith('/') || link.href.includes('.html'))) {
             link.addEventListener('click', handleLinkClick);
         }
     });
 }
 
+// Function to handle link clicks
 function handleLinkClick(e) {
     e.preventDefault();
-    const target = e.currentTarget.href;
+    const href = this.href;
     
-    // Get all transition slides
+    // Start transition animation
     const slides = document.querySelectorAll('.transition-slide');
-    
-    // Create timeline for transition
-    const tl = gsap.timeline({
-        onComplete: () => {
-            window.location.href = target;
-        }
+    slides.forEach((slide, index) => {
+        gsap.to(slide, {
+            scaleY: 1,
+            duration: 0.5,
+            delay: index * 0.1,
+            ease: 'power2.inOut'
+        });
     });
 
-    // Animate each slide with a slight delay
-    slides.forEach((slide, i) => {
-        tl.to(slide, {
-            scaleY: 1,
-            duration: 0.3,
-            ease: "power2.inOut"
-        }, i * 0.05);
-    });
+    // Navigate after animation
+    setTimeout(() => {
+        window.location.href = href;
+    }, 1000);
 }
 
 // Handle page load transition
