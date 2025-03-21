@@ -96,15 +96,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize back to top button
     createBackToTopButton();
 
-    // Add loading states to portfolio grid
-    const portfolioGrid = document.getElementById('projectsGrid');
-    if (portfolioGrid) {
-        showLoading(portfolioGrid);
-        // Your existing portfolio loading code here
-        // After loading is complete:
-        // hideLoading(portfolioGrid);
-    }
-
     // Add loading state to contact form
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {

@@ -6,7 +6,10 @@ let categories = [];
 async function fetchProjects() {
     const portfolioGrid = document.getElementById('projectsGrid');
     if (portfolioGrid) {
-        portfolioGrid.classList.add('loading');
+        // Only add loading class if it's not already there
+        if (!portfolioGrid.classList.contains('loading')) {
+            portfolioGrid.classList.add('loading');
+        }
     }
     
     try {
@@ -94,6 +97,7 @@ async function fetchProjects() {
         filterProjects(currentCategory);
     } finally {
         if (portfolioGrid) {
+            // Ensure loading class is removed
             portfolioGrid.classList.remove('loading');
         }
     }
