@@ -4,8 +4,16 @@ let categories = [];
 
 // Function to fetch projects data
 async function fetchProjects() {
+    const portfolioGrid = document.getElementById('projectsGrid');
+    if (portfolioGrid) {
+        portfolioGrid.classList.add('loading');
+    }
+    
     try {
         const response = await fetch('./js/projects.json');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const data = await response.json();
         projects = data.projects;
         categories = data.categories;
@@ -84,6 +92,10 @@ async function fetchProjects() {
         ];
         renderCategories();
         filterProjects(currentCategory);
+    } finally {
+        if (portfolioGrid) {
+            portfolioGrid.classList.remove('loading');
+        }
     }
 }
 
