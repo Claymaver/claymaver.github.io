@@ -136,4 +136,109 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    // Lightbox functionality
+    function createLightbox() {
+        const lightbox = document.createElement('div');
+        lightbox.className = 'fixed inset-0 bg-black/90 z-50 hidden items-center justify-center';
+        lightbox.innerHTML = `
+            <button class="absolute top-4 right-4 text-white hover:text-theme-primary transition-colors" aria-label="Close lightbox">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <button class="absolute left-4 text-white hover:text-theme-primary transition-colors" aria-label="Previous image">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+            </button>
+            <button class="absolute right-4 text-white hover:text-theme-primary transition-colors" aria-label="Next image">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+            </button>
+            <img src="" alt="" class="max-w-[90vw] max-h-[90vh] object-contain">
+        `;
+        document.body.appendChild(lightbox);
+
+        // Store current image index and all portfolio images
+        let currentIndex = 0;
+        let portfolioImages = [];
+
+        // Close button functionality
+        const closeBtn = lightbox.querySelector('button[aria-label="Close lightbox"]');
+        closeBtn.addEventListener('click', () => {
+            lightbox.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Navigation buttons functionality
+        const prevBtn = lightbox.querySelector('button[aria-label="Previous image"]');
+        const nextBtn = lightbox.querySelector('button[aria-label="Next image"]');
+        const lightboxImg = lightbox.querySelector('img');
+
+        function updateImage(index) {
+            if (index >= 0 && index < portfolioImages.length) {
+                currentIndex = index;
+                lightboxImg.src = portfolioImages[currentIndex].src;
+                lightboxImg.alt = portfolioImages[currentIndex].alt;
+            }
+        }
+
+        prevBtn.addEventListener('click', () => {
+            updateImage(currentIndex - 1);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            updateImage(currentIndex + 1);
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('hidden')) {
+                if (e.key === 'Escape') {
+                    lightbox.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                } else if (e.key === 'ArrowLeft') {
+                    updateImage(currentIndex - 1);
+                } else if (e.key === 'ArrowRight') {
+                    updateImage(currentIndex + 1);
+                }
+            }
+        });
+
+        // Close on click outside
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        return {
+            element: lightbox,
+            show: (img, images) => {
+                portfolioImages = images;
+                currentIndex = images.indexOf(img);
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+                lightbox.classList.remove('hidden');
+                lightbox.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+            }
+        };
+    }
+
+    // Initialize lightbox
+    const lightbox = createLightbox();
+
+    // Add click handlers to portfolio images
+    document.addEventListener('DOMContentLoaded', () => {
+        const portfolioImages = Array.from(document.querySelectorAll('.portfolio-image'));
+        portfolioImages.forEach(img => {
+            img.addEventListener('click', () => {
+                lightbox.show(img, portfolioImages);
+            });
+        });
+    });
 });

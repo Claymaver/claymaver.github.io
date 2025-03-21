@@ -88,7 +88,7 @@
     </script>
 
     <!-- Preload Critical Resources -->
-    <link rel="preload" href="Assets/Work/Videos/movie480_vp9.mp4" as="video" type="video/webm">
+    <link rel="preload" href="Assets/Work/Videos/movie480_vp9.mp4" as="video" type="video/mp4" crossorigin>
     <link rel="preload" href="Assets/Images/clay work photos-1.png" as="image">
     <link rel="preload" href="css/styles.css" as="style">
 </head>
@@ -135,18 +135,22 @@
 
     <!-- Hero Section -->
     <section class="min-h-screen flex items-center justify-center relative overflow-hidden" id="main-content">
-        <div class="absolute inset-0 bg-gradient-to-b from-theme-dark/80 to-theme-dark"></div>
-        <video class="absolute inset-0 w-full h-full object-cover -z-10" 
-               autoplay 
-               loop 
-               muted 
-               playsinline
-               poster="Assets/Images/clay work photos-1.png"
-               aria-label="Background video showcasing 3D artwork">
-            <source src="Assets/Work/Videos/movie480_vp9.mp4" type="video/webm">
-            <source src="Assets/Work/Videos/movie480_vp9.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+        <!-- Background Video Container -->
+        <div class="absolute inset-0 w-full h-full overflow-hidden">
+            <video 
+                class="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2 object-cover"
+                autoplay 
+                loop 
+                muted 
+                playsinline
+                poster="Assets/Images/clay work photos-1.png">
+                <source src="Assets/Work/Videos/movie480_vp9.mp4" type="video/mp4">
+            </video>
+            <!-- Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-b from-theme-dark/80 to-theme-dark"></div>
+        </div>
+
+        <!-- Content -->
         <div class="container mx-auto px-4 relative z-10 text-center">
             <h1 class="text-6xl md:text-7xl font-bold mb-6 animate-fade-in">
                 Bringing <span class="text-theme-primary">Imagination</span><br>
