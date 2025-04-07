@@ -104,7 +104,10 @@
         {
             "id": "Props",
             "name": "Props"
+        },
+        {
+            "id": "VFX",
+            "name": "VFX"
         }
     ]
 } 
-
