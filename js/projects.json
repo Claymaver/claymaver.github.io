@@ -3,7 +3,7 @@
         {
             "id": 1,
             "title": "H.A.M.P.T.E.R.",
-            "description": "Retro-futuristic robot design for the game Neon Overdrive",
+            "description": "Retro-futuristic robot design for the game Neon Overdrive Based on ED-209 from Robocop",
             "image": "Assets/Projects/Hampter/Hampter Cover.png",
             "category": "Characters",
             "featured": true,
@@ -16,7 +16,7 @@
                 },
                 {
                     "title": "Technical Details",
-                    "content": "The model was created using Blender for the base mesh and then rigging, Textured in Substance Painter. The final implementation and material setup was done in Unreal Engine, featuring dynamic lighting and PBR materials."
+                    "content": "The model was created using Blender for the base mesh and then rigging, Textured in Substance Painter. The final implementation and material setup was done in Unreal Engine"
                 },
                 {
                     "title": "Key Features",
@@ -46,7 +46,45 @@
             "specifications": {
                 "polycount": "54,810 triangles",
                 "textureResolution": "2K PBR textures",
-                "rigging": "Full rig controls"
+                "rigging": "Full IK and Target rig controls"
+            }
+            },
+        {
+            "id": 2,
+            "title": "A.R.T.I.M.E.S.",
+            "description": "Tank type mech design for the game Neon Overdrive",
+            "image": "Assets/Projects/Arti/Artimes cover.png",
+            "category": "Characters",
+            "featured": true,
+            "software": ["Blender", "Substance Painter", "Unreal Engine"],
+            "tags": ["Character", "Sci-Fi", "Hard Surface"],
+            "details": [
+                {
+                    "title": "Overview",
+                    "content": "A.R.T.I.M.E.S. is a more aggressive tank type mech for higher damage output and defense."
+                },
+                {
+                    "title": "Technical Details",
+                    "content": "The model was created using Blender for the base mesh and then rigging, Textured in Substance Painter. The final implementation and material setup was done in Unreal Engine. the treads are animated using a simple panning texture to simulate movement."
+                },
+                {
+                    "title": "Key Features",
+                    "content": "• Modular design\n• Advanced material system with dynamic wear and tear\n• Each weapon system was supposed to have a damaged counterpart same as the H.A.M.P.T.E.R. design."
+                }
+            ],
+            "gallery": [
+                {
+                    "url": "Assets/Projects/Arti/Artimes preview.png"
+                },
+                {
+                    "url": "Assets/Projects/Arti/Artimes topo.png"
+                }
+        
+            ],
+            "specifications": {
+                "polycount": "30,914 triangles",
+                "textureResolution": "2K PBR textures",
+                "rigging": "Full IK and Target rig controls"
             }
         }
     ],
@@ -69,3 +107,4 @@
         }
     ]
 } 
+
