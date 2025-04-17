@@ -238,14 +238,21 @@ async function loadProjectDetails() {
                 <div class="space-y-6">
                     <h2 class="text-2xl font-bold text-theme-primary">Gallery</h2>
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        ${project.gallery.map((image, index) => `
+                        ${project.gallery.map((media, index) => `
                             <div class="bg-theme-secondary/50 rounded-lg overflow-hidden border border-theme-primary/10">
-                                <img src="${image.url}" alt="${image.caption}" 
-                                     class="w-full h-64 object-cover cursor-pointer hover:opacity-90 transition-opacity"
-                                     data-image-index="${index + 1}">
-                                ${image.caption ? `
+                                ${media.type === 'video' ? `
+                                    <video controls class="w-full h-64 object-cover cursor-pointer" data-media-index="${index + 1}">
+                                        <source src="${media.url}" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                ` : `
+                                    <img src="${media.url}" alt="${media.caption}" 
+                                         class="w-full h-64 object-cover cursor-pointer hover:opacity-90 transition-opacity"
+                                         data-media-index="${index + 1}">
+                                `}
+                                ${media.caption ? `
                                     <div class="p-3 bg-theme-dark/80">
-                                        <p class="text-sm text-theme-light/80">${image.caption}</p>
+                                        <p class="text-sm text-theme-light/80">${media.caption}</p>
                                     </div>
                                 ` : ''}
                             </div>
@@ -254,14 +261,14 @@ async function loadProjectDetails() {
                 </div>
             ` : ''}
         `;
-
-        // Add click handlers for all images
-        const allImages = [...projectContent.querySelectorAll('img')];
-        console.log('Found images:', allImages.length);
-        allImages.forEach((img) => {
-            img.addEventListener('click', () => {
-                const index = parseInt(img.getAttribute('data-image-index'));
-                console.log('Image clicked:', index);
+    
+        // Add click handlers for all images and videos
+        const allMedia = [...projectContent.querySelectorAll('img, video')];
+        console.log('Found media items:', allMedia.length);
+        allMedia.forEach((media) => {
+            media.addEventListener('click', () => {
+                const index = parseInt(media.getAttribute('data-media-index'));
+                console.log('Media clicked:', index);
                 lightboxInstance.showLightbox(index);
             });
         });

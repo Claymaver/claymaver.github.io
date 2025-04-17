@@ -25,22 +25,28 @@
             ],
             "gallery": [
                 {
-                    "url": "Assets/Projects/Hampter/Hampter Front.png"
+                    "url": "Assets/Projects/Hampter/Hampter Front.png",
+                    "type": "image"
                 },
                 {
-                    "url": "Assets/Projects/Hampter/Hampter Side.png"
+                    "url": "Assets/Projects/Hampter/Hampter Side.png",
+                    "type": "image"
                 },
                 {
-                    "url": "Assets/Projects/Hampter/Hampter Detail.png"
+                    "url": "Assets/Projects/Hampter/Hampter Detail.png",
+                    "type": "image"
                 },
                 {
-                    "url": "Assets/Projects/Hampter/Front View Damaged.png"
+                    "url": "Assets/Projects/Hampter/Front View Damaged.png",
+                    "type": "image"
                 },
                 {
-                    "url": "Assets/Projects/Hampter/Side View Damaged.png"
+                    "url": "Assets/Projects/Hampter/Side View Damaged.png",
+                    "type": "image"
                 },
                 {
-                    "url": "Assets/Projects/Hampter/Back View Damaged.png"
+                    "url": "Assets/Projects/Hampter/Back View Damaged.png",
+                    "type": "image"
                 }
             ],
             "specifications": {
@@ -74,12 +80,19 @@
             ],
             "gallery": [
                 {
-                    "url": "Assets/Projects/Arti/Artimes preview.png"
+                    "url": "Assets/Projects/Arti/Artimes preview.png",
+                    "type": "image"
                 },
                 {
-                    "url": "Assets/Projects/Arti/Artimes topo.png"
+                    "url": "Assets/Projects/Arti/Artimes topo.png",
+                    "type": "image"
+                },
+                {
+                    "url": "Assets/Projects/Arti/Artimes Treads.mp4",
+                    "type": "video",
+                    "caption": "Tread mechanics in action"
                 }
-        
+
             ],
             "specifications": {
                 "polycount": "30,914 triangles",

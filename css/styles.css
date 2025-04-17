@@ -2,16 +2,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --neo-primary: #00fbff;
-  --neo-secondary: #005c5e;
-  --neo-accent: #ff00e5;
-  --neo-dark: #001618;
-  --neo-light: #e6ffff;
-  --theme-primary: #00fbff;
-  --theme-secondary: #2A2D3A;
-  --theme-accent: #FF3366;
-  --theme-dark: #1A1C24;
-  --theme-light: #F0F7F7;
+--neo-primary: #00FFFF;
+--neo-secondary: #1A1A2E;
+--neo-accent: #FF00FF;
+--neo-dark: #0D0D1A;
+--neo-light: #E0E0FF;
+--theme-primary: #00FFFF;
+--theme-secondary: #1A1A2E;
+--theme-accent: #FF00FF;
+--theme-dark: #0D0D1A;
+--theme-light: #E0E0FF;
 }
 
 body {
