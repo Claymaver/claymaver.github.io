@@ -28,27 +28,23 @@ function getUrlParameter(name) {
 
 // Function to create lightbox
 function createLightbox() {
-    // Remove existing lightbox if it exists
     const existingLightbox = document.getElementById('lightbox');
-    if (existingLightbox) {
-        existingLightbox.remove();
-    }
+    if (existingLightbox) existingLightbox.remove();
 
     const lightbox = document.createElement('div');
     lightbox.id = 'lightbox';
     lightbox.className = 'fixed inset-0 bg-black/95 z-50 hidden flex items-center justify-center';
     lightbox.innerHTML = `
-        <button class="absolute top-4 right-4 text-white hover:text-theme-primary transition-colors text-2xl" id="closeLightbox">
-            ×
-        </button>
-        <button class="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:text-theme-primary transition-colors text-2xl" id="prevImage">
-            ‹
-        </button>
-        <button class="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-theme-primary transition-colors text-2xl" id="nextImage">
-            ›
-        </button>
-        <div class="relative max-w-[90vw] max-h-[90vh]">
-            <img id="lightboxImage" class="max-w-full max-h-[90vh] object-contain" src="" alt="">
+        <button class="absolute top-4 right-4 text-white hover:text-theme-primary transition-colors text-2xl" id="closeLightbox">×</button>
+        <button class="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:text-theme-primary transition-colors text-2xl" id="prevImage">‹</button>
+        <button class="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-theme-primary transition-colors text-2xl" id="nextImage">›</button>
+        <div class="relative max-w-[90vw] max-h-[90vh] space-y-4 text-center">
+            <img id="lightboxImage" class="max-w-full max-h-[80vh] object-contain hidden mx-auto" src="" alt="">
+            <video id="lightboxVideo" class="max-w-full max-h-[80vh] object-contain hidden mx-auto" controls autoplay muted>
+                <source src="" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p id="lightboxCaption" class="text-theme-light text-sm"></p>
         </div>
     `;
     document.body.appendChild(lightbox);
@@ -60,66 +56,96 @@ function initializeLightbox(project) {
     console.log('Initializing lightbox with project:', project);
     const lightbox = createLightbox();
     const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxVideo = document.getElementById('lightboxVideo');
+    const lightboxCaption = document.getElementById('lightboxCaption');
     const closeBtn = document.getElementById('closeLightbox');
     const prevBtn = document.getElementById('prevImage');
     const nextBtn = document.getElementById('nextImage');
     let currentIndex = 0;
-    let images = [];
+    let mediaItems = [];
 
-    // Combine main image and gallery images
     if (project.image) {
-        images.push({ url: project.image, caption: project.title });
+        mediaItems.push({ url: project.image, caption: project.title, type: 'image' });
     }
     if (project.gallery) {
-        images = [...images, ...project.gallery];
+        mediaItems = [...mediaItems, ...project.gallery];
     }
 
-    console.log('Combined images array:', images);
+    console.log('Combined media array:', mediaItems);
 
-    function showImage(index) {
-        if (index >= 0 && index < images.length) {
+    function showMedia(index) {
+        if (index >= 0 && index < mediaItems.length) {
             currentIndex = index;
-            lightboxImage.src = images[index].url;
-            lightboxImage.alt = images[index].caption || '';
-            console.log('Showing image:', images[index].url, 'at index:', index);
+            const media = mediaItems[index];
+
+            lightboxImage.classList.add('hidden');
+            lightboxVideo.classList.add('hidden');
+            lightboxVideo.pause();
+
+            lightboxCaption.textContent = media.caption || '';
+
+            if (media.type === 'video') {
+                lightboxVideo.querySelector('source').src = media.url;
+                lightboxVideo.load();
+                lightboxVideo.classList.remove('hidden');
+                console.log('Showing video:', media.url, 'at index:', index);
+            } else {
+                lightboxImage.src = media.url;
+                lightboxImage.alt = media.caption || '';
+                lightboxImage.classList.remove('hidden');
+                console.log('Showing image:', media.url, 'at index:', index);
+            }
         }
     }
 
     function showLightbox(index) {
-        console.log('Showing lightbox at index:', index);
-        showImage(index);
+        showMedia(index);
         lightbox.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
     }
 
     function hideLightbox() {
-        console.log('Hiding lightbox');
         lightbox.classList.add('hidden');
+        lightboxVideo.pause();
         document.body.style.overflow = '';
     }
 
-    // Event listeners
     closeBtn.addEventListener('click', hideLightbox);
-    prevBtn.addEventListener('click', () => {
-        console.log('Previous button clicked');
-        showImage(currentIndex - 1);
-    });
-    nextBtn.addEventListener('click', () => {
-        console.log('Next button clicked');
-        showImage(currentIndex + 1);
-    });
+    prevBtn.addEventListener('click', () => showMedia(currentIndex - 1));
+    nextBtn.addEventListener('click', () => showMedia(currentIndex + 1));
     lightbox.addEventListener('click', (e) => {
         if (e.target === lightbox) hideLightbox();
     });
 
-    // Keyboard navigation
     document.addEventListener('keydown', (e) => {
         if (!lightbox.classList.contains('hidden')) {
             if (e.key === 'Escape') hideLightbox();
-            if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
-            if (e.key === 'ArrowRight') showImage(currentIndex + 1);
+            if (e.key === 'ArrowLeft') showMedia(currentIndex - 1);
+            if (e.key === 'ArrowRight') showMedia(currentIndex + 1);
         }
     });
+
+    // Swipe support (basic)
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    lightbox.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+
+    lightbox.addEventListener('touchend', e => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipeGesture();
+    });
+
+    function handleSwipeGesture() {
+        const swipeDistance = touchEndX - touchStartX;
+        if (swipeDistance > 50) {
+            showMedia(currentIndex - 1); // Swipe right
+        } else if (swipeDistance < -50) {
+            showMedia(currentIndex + 1); // Swipe left
+        }
+    }
 
     return { showLightbox };
 }

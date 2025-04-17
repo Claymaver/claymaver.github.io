@@ -85,7 +85,13 @@
                 },
                 {
                     "url": "Assets/Projects/Arti/Artimes topo.png",
-                    "type": "image"
+                    "type": "image",
+                    "caption": "Wireframe view of the model"
+                },
+                {
+                    "url": "Assets/Projects/Arti/Tank_Boss_Dude_120624.jpg",
+                    "type": "image",
+                    "caption": "Concept art for the mech"
                 },
                 {
                     "url": "Assets/Projects/Arti/Artimes Treads.mp4",
